@@ -1,8 +1,8 @@
 import pandas as pd
 
 # Load datasets
-pnl = pd.read_excel(r'Datasets\Stocks_PnL_Report_With_Holding_Period.xlsx')
-order_history = pd.read_excel(r'Datasets\Order_History_Split_DateTime (version 1).xlsb.xlsx')
+pnl = pd.read_excel(r'S_pnl.xlsx')
+order_history = pd.read_excel(r'S_order.xlsx')
 
 # Convert to datetime
 order_history['Execution DateTime'] = pd.to_datetime(order_history['Execution DateTime'])
@@ -71,5 +71,5 @@ pnl[['Buy Time', 'Sell Time']] = pnl.apply(
 )
 
 # Save
-# pnl.to_excel('PnL_With_Accurate_Market_Times.xlsx', index=False)
+pnl.to_excel('S_pnl.xlsx', index=False)
 print("Done! File saved with accurate buy/sell times (9:15 AM - 3:30 PM).")

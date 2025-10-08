@@ -20,7 +20,7 @@ from statsmodels.tsa.seasonal import seasonal_decompose
 from scipy import stats
 
 plt.tight_layout()  
-plt.show(block=True)  # Forces the plot to stay open until manually closed   # Enable interactive mode
+# plt.show(block=True)  # Forces the plot to stay open until manually closed   # Enable interactive mode
 
 warnings.filterwarnings('ignore')
 
@@ -690,7 +690,7 @@ def main():
         start_time = time.time()
         
         print("=== 📈 ADVANCED TRADING ANALYSIS DASHBOARD 📊 ===")
-        analyzer = TradingAnalyzer('Final_PnL_Dataset.xlsx')
+        analyzer = TradingAnalyzer('S_pnl.xlsx')
         data = analyzer.load_and_clean_data()
         
         # Train models first (takes time)

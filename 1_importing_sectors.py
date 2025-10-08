@@ -2,8 +2,8 @@ import pandas as pd
 import yfinance as yf
 
 # Load datasets
-pnl = pd.read_excel(r'Datasets\Stocks_PnL_Report_3788142010_2021-10-01_2025-04-03.xlsx')
-order_history = pd.read_excel(r'Datasets\Stocks_Order_History_3788142010_2021-10-01_2025-04-05.xlsx')
+pnl = pd.read_excel(r'S_pnl.xlsx')
+order_history = pd.read_excel(r'S_order.xlsx')
 
 # Create symbol mapping from order history (Symbol to Stock name)
 symbol_to_name = dict(zip(order_history['Symbol'], order_history['Stock name']))
@@ -22,6 +22,7 @@ for symbol in unique_symbols:
             info.get('sector', 'Unknown'),
             info.get('industry', 'Unknown')
         )
+        print(f"Fetched data for {symbol}: {sector_data[symbol][0]}")
     except Exception as e:
         print(f"Error fetching {symbol}: {str(e)}")
         sector_data[symbol] = ('Unknown', 'Unknown')
@@ -35,8 +36,10 @@ pnl['Symbol'] = pnl['Stock name'].map(name_to_symbol)
 pnl['Sector'] = pnl['Symbol'].map(lambda x: sector_data.get(x, ('Unknown', 'Unknown'))[0])
 pnl['Industry'] = pnl['Symbol'].map(lambda x: sector_data.get(x, ('Unknown', 'Unknown'))[1])
 
-# Save files
-# order_history.to_excel('Stocks_Order_History_With_Sectors_Yahoo.xlsx', index=False)
-# pnl.to_excel('Stocks_PnL_History_With_Sectors_Yahoo.xlsx', index=False)
+# Save back to the SAME files (overwriting them)
+order_history.to_excel('S_order.xlsx', index=False)
+pnl.to_excel('S_pnl.xlsx', index=False)
 
-print("Sector and Industry data added successfully!")
+print("\nSector and Industry data added successfully to original files!")
+print(f"Updated S_order.xlsx with {len(order_history)} rows")
+print(f"Updated S_pnl.xlsx with {len(pnl)} rows")

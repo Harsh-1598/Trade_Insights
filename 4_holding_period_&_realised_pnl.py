@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime
 
 # Load PnL dataset
-pnl = pd.read_excel('Stocks_PnL_Report_With_Sectors_Yahoo.xlsx')
+pnl = pd.read_excel('S_pnl.xlsx')
 
 # Convert dates to datetime
 pnl['Buy date'] = pd.to_datetime(pnl['Buy date'], dayfirst=True)
@@ -18,7 +18,7 @@ pnl['Realized PnL %'] = (pnl['Realised P&L'] / pnl['Buy value']) * 100
 pnl['Realized PnL %'] = pnl['Realized PnL %'].round(2)
 
 # Save updated file
-# pnl.to_excel('Stocks_PnL_Report_With_Holding_Period.xlsx', index=False)
+pnl.to_excel('S_pnl.xlsx', index=False)
 
 print("Holding Period & Realized PnL % added successfully!")
-print("Check 'Stocks_PnL_Report_With_Holding_Period.xlsx'")
+print("Check 'S_pnl.xlsx'")
