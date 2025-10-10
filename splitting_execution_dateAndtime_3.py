@@ -11,7 +11,7 @@ order_history['Execution Date'] = order_history['Execution DateTime'].dt.date  #
 order_history['Execution Time'] = order_history['Execution DateTime'].dt.time  # Only time
 
 # 3. Drop the original column (optional)
-order_history.drop('Execution date and time', axis=1, inplace=True)
+order_history.drop('Execution DateTime', axis=1, inplace=True)
 
 # 4. Save updated file
 order_history.to_excel('S_order.xlsx', index=False)
