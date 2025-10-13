@@ -29,7 +29,7 @@ class TradingAnalyzer:
         self.file_path = file_path
         self.pnl = None
         self.models = {}
-        
+      
     def load_and_clean_data(self):
         """Comprehensive data loading and cleaning"""
         print("Loading and cleaning data...")
@@ -690,7 +690,7 @@ def main():
         start_time = time.time()
         
         print("=== 📈 ADVANCED TRADING ANALYSIS DASHBOARD 📊 ===")
-        analyzer = TradingAnalyzer('S_pnl.xlsx')
+        analyzer = TradingAnalyzer('Stocks_PnL_3788142010_01-10-2021_11-10-2025_report.xlsx')
         data = analyzer.load_and_clean_data()
         
         # Train models first (takes time)
